@@ -1,0 +1,10 @@
+{
+	"name"				: "PeerGaming-Server",
+	"description"	: "Brookering server & handler for PeerGaming",
+	"version"			: "0.2.0",
+
+	"devDependencies"	: {
+		"websocket"	: "latest",
+    "passport"  : "latest"
+	}
+}
