@@ -2,7 +2,7 @@
  *  Peerlist
  *  ========
  *
- *  Brookering - seperating channels
+ *  Brokering - seperating channels
  *
  */
 
@@ -43,7 +43,19 @@ var peerlist = {
   },
 
 
-  // request...// register...
+  // re-assign
+  change: function ( msg, res ) {
+
+    this.init( msg, rooms[ msg.data ][ msg.local ] );
+    delete          rooms[ msg.data ][ msg.local ];
+
+    this.lookup( msg, res );
+
+    if ( res ) res.end();
+  },
+
+
+  // request - register
   lookup: function ( msg, res ) {
 
     var partnerID = this.getPartner( msg.origin, msg.local );
