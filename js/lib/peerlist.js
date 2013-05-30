@@ -2,8 +2,7 @@
  *  Peerlist
  *  ========
  *
- *  Brokering - seperating channels
- *
+ *  Brokering by seperating channels.
  */
 
 
@@ -64,6 +63,9 @@ var peerlist = {
 
     var conn = rooms[ msg.origin ][ msg.local ];
 
+    // unstable connection got closed
+    if ( !conn ) return this.remove( msg.origin, msg.remote );
+
     conn.send( JSON.stringify(partnerID) );
   },
 
@@ -87,6 +89,9 @@ var peerlist = {
   exchange: function ( msg, res )  {
 
     var conn = rooms[ msg.origin ][ msg.remote ];
+
+    // unstable connection got closed
+    if ( !conn ) return this.remove( msg.origin, msg.remote );
 
     if ( conn.send ) {
 
