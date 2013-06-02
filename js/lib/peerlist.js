@@ -64,7 +64,7 @@ var peerlist = {
     var conn = rooms[ msg.origin ][ msg.local ];
 
     // unstable connection got closed
-    if ( !conn ) return this.remove( msg.origin, msg.remote );
+    if ( !conn ) return this.remove({ origin: msg.origin, local: msg.remote });
 
     conn.send( JSON.stringify(partnerID) );
   },
@@ -91,7 +91,7 @@ var peerlist = {
     var conn = rooms[ msg.origin ][ msg.remote ];
 
     // unstable connection got closed
-    if ( !conn ) return this.remove( msg.origin, msg.remote );
+    if ( !conn ) return this.remove({ origin: msg.origin, local: msg.remote });
 
     if ( conn.send ) {
 
