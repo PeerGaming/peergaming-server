@@ -85,6 +85,7 @@ var peerlist = {
   // ICE & SDP
   setIceCandidates  : function() {  this.exchange.apply( this, arguments );  },
   setConfigurations : function() {  this.exchange.apply( this, arguments );  },
+  expectPackages    : function() {  this.exchange.apply( this, arguments );  },
 
   exchange: function ( msg, res )  {
 
